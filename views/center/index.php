@@ -21,7 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Sajiri Shariki', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -36,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             [
                 'class' => 'yii\grid\ActionColumn',
+                'header' => 'Kitendo', // ← This sets the label
+                'headerOptions' => ['style' => 'text-align: center;'], // optional
                 'template' => '{view} {update}',
                 'buttons' => [
                     'view' => function ($url, $model) {

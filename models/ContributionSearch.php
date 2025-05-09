@@ -42,7 +42,7 @@ class ContributionSearch extends Contribution
      */
     public function search($params, $formName = null)
     {
-        $query = Contribution::find();
+        $query = Contribution::find()->orderBy('id DESC');
 
         // add conditions that should always apply here
 

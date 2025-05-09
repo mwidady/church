@@ -15,7 +15,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="mb-3 row">
-
         <div class="col-md-3">
             <?=
                 $form->field($model, 'contribution_type_id')
@@ -52,7 +51,7 @@ use yii\widgets\ActiveForm;
             ?>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-6">
             <?= $form->field($model, 'payment_desc')->textarea(['rows' => 1]) ?>
         </div>
 

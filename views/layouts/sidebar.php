@@ -28,7 +28,7 @@ use yii\helpers\Html;
 
                 <li class="pc-item">
                     <?= Html::a(
-                        '<span class="pc-micon"><i class="ti ti-user"></i></span> <span class="pc-mtext">Msharika</span>',
+                        '<span class="pc-micon"><i class="ti ti-user"></i></span> <span class="pc-mtext">Washarika</span>',
                         ['user/index'],
                         ['class' => 'pc-link']
                     ) ?>
@@ -55,7 +55,7 @@ use yii\helpers\Html;
 
                 <li class="pc-item">
                     <?= Html::a(
-                        '<span class="pc-micon"><i class="ti ti-building-warehouse"></i></span> <span class="pc-mtext">Sharika</span>',
+                        '<span class="pc-micon"><i class="ti ti-building-warehouse"></i></span> <span class="pc-mtext">Masharika</span>',
                         ['center/index'],
                         ['class' => 'pc-link']
                     ) ?>
@@ -84,7 +84,7 @@ use yii\helpers\Html;
                 </li>
                 <li class="pc-item">
                     <?= Html::a(
-                        '<span class="pc-micon"><i class="ti ti-letter-m"></i></span> <span class="pc-mtext">Mkoa</span>',
+                        '<span class="pc-micon"><i class="ti ti-letter-m"></i></span> <span class="pc-mtext">Mikoa</span>',
                         ['region/index'],
                         ['class' => 'pc-link']
                     ) ?>
@@ -98,11 +98,11 @@ use yii\helpers\Html;
                 </li>
                 <hr class="sidebar-divider">
                 <li class="pc-item">
-                    
+
                     <?= Html::beginForm(['/site/logout'], 'post', ['id' => 'logout-form']) ?>
                     <?= Html::a('<span class="pc-micon"><i class="ti ti-logout"></i></span> <span class="pc-mtext">Kutoka</span>', '#', [
-                    'onclick' => "document.getElementById('logout-form').submit(); return false;",
-                    'class' => 'pc-link', // adjust this to match your nav styles
+                        'onclick' => "document.getElementById('logout-form').submit(); return false;",
+                        'class' => 'pc-link', // adjust this to match your nav styles
                     ]) ?>
                     <?= Html::endForm() ?>
                 </li>

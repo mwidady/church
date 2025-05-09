@@ -27,7 +27,8 @@
         "insolita/yii2-migration-generator": "2.3",
         "yii2mod/yii2-rbac": "*",
         "tebazil/db-seeder": "*",
-        "yiisoft/yii2-bootstrap5": "^2.0"
+        "yiisoft/yii2-bootstrap5": "^2.0",
+        "phpoffice/phpspreadsheet": "^4.2"
         
     },
     "require-dev": {

@@ -21,8 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Sajiri Mkoa', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -33,6 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             [
                 'class' => 'yii\grid\ActionColumn',
+                'header' => 'Kitendo', // ← This sets the label
+                'headerOptions' => ['style' => 'text-align: center;'], // optional
                 'template' => '{view} {update}',
                 'buttons' => [
                     'view' => function ($url, $model) {

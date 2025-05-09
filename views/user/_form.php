@@ -33,7 +33,7 @@ use app\models\Center;
     <div class="mb-3 row">
         <div class="col-md-4">
             <?= $form->field($model, 'gender')->dropDownList(
-                ['Mme' => 'Mme', 'Mke' => 'Mke'],
+                ['Me' => 'Me', 'Ke' => 'Ke'],
             ) ?>
         </div>
         <div class="col-md-4">
@@ -148,11 +148,8 @@ use app\models\Center;
             <?= $form->field($model, 'church_elder')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-4">
-
             <?= $form->field($model, 'home_congregation')->textInput(['maxlength' => true]) ?>
         </div>
-
-
 
         <div class="col-md-4">
             <?=
@@ -162,6 +159,24 @@ use app\models\Center;
                     );
             ?>
         </div>
+
+        <?php
+        if (!$model->isNewRecord) {
+            ?>
+            <div class="col-md-4">
+                <?= $form->field($model, 'status')->dropDownList(
+                    [
+                        1 => 'Hai',
+                        2 => 'Si Hai',
+                        3 => 'Amehama',
+                        4 => 'Amefariki'
+                    ],
+                ) ?>
+            </div>
+            <?php
+        }
+        ?>
+
     </div>
 
 

@@ -61,13 +61,11 @@ class UserController extends Controller
     {
 
         $searchModel = new DependantSearch();
-        $dataProvider = $searchModel->search([]);
+        $dataProvider = $searchModel->search(['DependantSearch' => ['user_id' => $id]]);
 
 
         $searchModelPayment = new ContributionSearch();
-        $dataProviderPayment = $searchModelPayment->search($this->request->queryParams);
-
-
+        $dataProviderPayment = $searchModelPayment->search(['ContributionSearch' => ['user_id' => $id]]);
 
 
         return $this->render('view', [

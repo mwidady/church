@@ -16,32 +16,33 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="contribution-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <p>
+        <?= Html::a('Sajiri Matoleo', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <?php
+     Pjax::begin(); 
+     $totalAmount = $dataProvider->query->sum('amount');
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'showFooter' => true,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            [
-                'label' => 'Msharika',
-                'value' => function ($data) {
-                        return $data->user->first_name . " " . $data->user->last_name;
-                    }
-
-            ],
             'contributionsType.name',
-            'amount',
             'date_of_payment',
             'payment_mode',
             'reference_no',
-            //'payment_desc:ntext',
-            //'channel_name',
+            [
+                'attribute' => 'amount',
+                'footer' => Yii::$app->formatter->asDecimal($totalAmount, 2),
+            ],
+            
             [
                 'class' => 'yii\grid\ActionColumn',
+                'header' => 'Kitendo', // ← This sets the label
+                'headerOptions' => ['style' => 'text-align: center;'], // optional
                 'template' => '{view} {update}',
                 'buttons' => [
                     'view' => function ($url, $model) {

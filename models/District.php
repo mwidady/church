@@ -46,7 +46,7 @@ class District extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'Wilaya',
-            'name' => 'Jina',
+            'name' => 'Jina la Wilaya',
             'region_id' => 'Mkoa',
         ];
     }

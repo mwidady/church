@@ -42,7 +42,7 @@ class Region extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'Mkoa',
-            'name' => 'Jina',
+            'name' => 'Jina la Mkoa',
         ];
     }
 

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var app\models\Contribution $model */
 
-$this->title = "Malipo ya " . $model->user->first_name . " " . $model->user->last_name;
+$this->title = "Malipo ya " . $model->contributionsType->name;
 $this->params['breadcrumbs'][] = ['label' => 'Matoleo', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -30,7 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             // 'id',
-            'user.last_name',
+            [
+                'label' => 'Aliyechangia',
+                'value' => function ($data) {
+                if ($data->user) {
+                    return $data->user->first_name . " " . $data->user->last_name;
+                } else {
+                    return "Mkusanyiko siku Husika";
+                }
+            }
+            ],
             'contributionsType.name',
             'amount',
             'date_of_payment',
@@ -38,6 +47,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'reference_no',
             'payment_desc:ntext',
             'channel_name',
+            [
+                'label' => 'Imesajiliwa Na',
+                'value' => function ($data) {
+                if ($data->createdBy) {
+                    return $data->createdBy->first_name . " " . $data->createdBy->last_name;
+                } else {
+                    return "NONE";
+                }
+            }
+            ],
         ],
     ]) ?>
 

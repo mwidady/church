@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Contribution;
 use app\models\ContributionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
 
 /**
  * ContributionController implements the CRUD actions for Contribution model.
@@ -60,7 +62,7 @@ class ContributionController extends Controller
         ]);
     }
 
-        /**
+    /**
      * Updates an existing Contribution model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
@@ -85,6 +87,7 @@ class ContributionController extends Controller
         $model = new Contribution();
         if ($this->request->isPost && $model->load($this->request->post())) {
             $model->user_id = $id;
+            $model->created_by = Yii::$app->user->id;
             $model->save();
             return $this->redirect(['user/view', 'id' => $id]);
         }
@@ -119,9 +122,8 @@ class ContributionController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-
-
-                $model->save();
+                $model->created_by = Yii::$app->user->id;
+                $model->save(false);
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {

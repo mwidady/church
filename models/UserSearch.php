@@ -41,7 +41,7 @@ class UserSearch extends User
      */
     public function search($params, $formName = null)
     {
-        $query = User::find();
+        $query = User::find()->orderBy('id DESC');
 
         // add conditions that should always apply here
 
@@ -67,9 +67,15 @@ class UserSearch extends User
             'center_id' => $this->center_id,
             'status' => $this->status,
             'updated_at' => $this->updated_at,
-            'created_at' => $this->created_at,
+            // 'created_at' => $this->created_at,
             'created_by' => $this->created_by,
         ]);
+
+        if (!empty($this->created_at)) {
+            $start = $this->created_at . ' 00:00:00';
+            $end = $this->created_at . ' 23:59:59';
+            $query->andFilterWhere(['between', 'created_at', $start, $end]);
+        }
 
         $query->andFilterWhere(['like', 'first_name', $this->first_name])
             ->andFilterWhere(['like', 'middle_name', $this->middle_name])

@@ -34,6 +34,7 @@ function floatchart() {
         categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       }
     };
+
     var chart = new ApexCharts(document.querySelector('#visitor-chart'), options);
     chart.render();
     var options1 = {
@@ -87,14 +88,14 @@ function floatchart() {
         enabled: false
       },
       series: [{
-        data: [80, 95, 70, 42, 65, 55, 78]
+        data: [80, 95, 70, 42, 65, 55, 78, 80, 95, 70, 42, 65]
       }],
       stroke: {
         curve: 'smooth',
         width: 2
       },
       xaxis: {
-        categories: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         axisBorder: {
           show: false
         },
@@ -113,7 +114,7 @@ function floatchart() {
     chart.render();
   })();
 
-  
+
   (function () {
     var options = {
       chart: {

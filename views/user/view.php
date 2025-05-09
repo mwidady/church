@@ -83,25 +83,70 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 return $model->dobDistrict?->name ?? 'N/A';
                                             }
                             ],
-                            ['attribute' => 'is_baptized'],
+                            [
+                                'attribute' => 'is_baptized',
+                                'value' => function ($model) {
+                                                if ($model->is_baptized) {
+                                                    return 'Ndio';
+                                                }
+                                                return 'Hapana';
+                                            }
+                            ],
                             ['attribute' => 'marital_status'],
-                            ['attribute' => 'confirmation'],
+                            [
+                                'attribute' => 'confirmation',
+                                'value' => function ($model) {
+                                                if ($model->confirmation) {
+                                                    return 'Ndio';
+                                                }
+                                                return 'Hapana';
+                                            }
+                            ],
                             ['attribute' => 'marriage_type'],
                             ['attribute' => 'spouse_name'],
-                            ['attribute' => 'is_join_table'],
-                            ['attribute' => 'street_join'],
+                            [
+                                'attribute' => 'is_join_table',
+                                'value' => function ($model) {
+                                                if ($model->is_join_table) {
+                                                    return 'Ndio';
+                                                }
+                                                return 'Hapana';
+                                            }
+                            ],
+                            [
+                                'attribute' => 'street_join',
+                                'value' => function ($model) {
+                                                if ($model->street_join) {
+                                                    return 'Ndio';
+                                                }
+                                                return 'Hapana';
+                                            }
+                            ],
                             ['attribute' => 'church_elder'],
                             ['attribute' => 'occupation'],
                             ['attribute' => 'occupation_place'],
-                            ['attribute' => 'designation_designation'],
+                            ['attribute' => 'designation'],
                             ['attribute' => 'phone'],
-                            ['attribute' => 'email:email'],
+                            ['attribute' => 'email'],
                             ['attribute' => 'next_of_kin_phone'],
                             ['attribute' => 'home_congregation'],
                             ['attribute' => 'center.name'],
-                            ['attribute' => 'status'],
+                            [
+                                'attribute' => 'status',
+                                'value' => function ($model) {
+                                                if ($model->status) {
+                                                    return 'Hai';
+                                                }
+                                                return 'Si Hai';
+                                            }
+                            ],
                             ['attribute' => 'created_at'],
-                            ['attribute' => 'created.name'],
+                            [
+                                'label' => 'Amesajiliwa Na',
+                                'value' => function ($model) {
+                                                return $model->createdBy?->first_name . "  " . $model->createdBy?->last_name;
+                                            }
+                            ],
                         ],
                     ]) ?>
                 </div>
@@ -122,7 +167,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             'dob',
                             //'user_id',
                             'dependant_type',
-                            'is_budtized',
                             [
                                 'attribute' => 'is_budtized',
                                 'value' => function ($data) {
@@ -133,7 +177,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 },
                             ],
-                            //'occupation',
+                            'occupation',
                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'template' => '{view} {update}',

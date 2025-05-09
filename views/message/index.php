@@ -41,6 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'center_at',
             [
                 'class' => 'yii\grid\ActionColumn',
+                'header' => 'Kitendo', // ← This sets the label
+                'headerOptions' => ['style' => 'text-align: center;'], // optional
                 'template' => '{view}',
                 'buttons' => [
                     'view' => function ($url, $model) {

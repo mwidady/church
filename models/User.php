@@ -324,4 +324,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->password === md5($password);
     }
 
+    // In your model (e.g., Post.php)
+public function getFormattedDate()
+{
+    return Yii::$app->formatter->asDate($this->created_at, 'php:d-m-Y');
+}
+
 }

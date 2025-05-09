@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var app\models\Dependant $model */
 
-$this->title = $model->id;
+$this->title = ucfirst($model->first_name) . " " . ucfirst($model->last_name);
 $this->params['breadcrumbs'][] = ['label' => 'Tegemezi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -39,7 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->user->first_name . " " . $model->user->middle_name . " " . $model->user->last_name,
             ],
             'dependant_type',
-            'is_budtized',
+            [
+                'attribute' => 'is_budtized',
+                'value' => function ($data) {
+                if ($data->is_budtized) {
+                    return 'Ndiyo';
+                }
+                return 'Hapana';
+            }
+
+            ],
             'occupation',
         ],
     ]) ?>

@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property int $user_id
+ * @property int $created_by
  * @property int $contribution_type_id
  * @property float $amount
  * @property string $date_of_payment
@@ -40,7 +41,7 @@ class Contribution extends \yii\db\ActiveRecord
         return [
             [['reference_no', 'payment_desc', 'channel_name'], 'default', 'value' => null],
             [['user_id', 'contribution_type_id', 'amount', 'date_of_payment', 'payment_mode'], 'required'],
-            [['user_id', 'contribution_type_id'], 'integer'],
+            [['user_id', 'created_by', 'contribution_type_id'], 'integer'],
             [['amount'], 'number'],
             [['date_of_payment'], 'safe'],
             [['payment_desc'], 'string'],
@@ -62,7 +63,7 @@ class Contribution extends \yii\db\ActiveRecord
             'amount' => 'Kiasi',
             'date_of_payment' => 'Siku aliyolipia',
             'payment_mode' => 'Aina ya Ulipaji',
-            'reference_no' => 'Kumbukumbu Number',
+            'reference_no' => 'Kumbu Namba',
             'payment_desc' => 'Maelezo ya Malipo',
             'channel_name' => 'Jina la Aina ya Ulipaji',
         ];
@@ -88,4 +89,13 @@ class Contribution extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::class, ['id' => 'created_by']);
+    }
 }
